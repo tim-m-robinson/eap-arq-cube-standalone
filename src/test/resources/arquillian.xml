@@ -24,11 +24,9 @@
 
       dummy:
         image: fuse_eap:6.3.0
-        #exposedPorts: [8080/tcp, 9999/tcp]
         await:
           strategy: sleeping
           sleepTime: 30 s
-        #portBindings: [8080/tcp]
         restartPolicy:
           name: failure
           maximumRetryCount: 1
