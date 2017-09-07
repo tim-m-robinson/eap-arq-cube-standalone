@@ -1,0 +1,4 @@
+  fuse_eap:
+    image: fuse_eap:6.3.0
+    ports:
+      - "8080:8080"
