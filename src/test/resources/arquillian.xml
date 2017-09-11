@@ -7,7 +7,6 @@
         
   <extension qualifier="docker"> 
     <property name="definitionFormat">CUBE</property>
-    <!--property name="dockerInsideDockerResolution">true</property-->
     <property name="dockerContainers">
       test:
         image: proxy
