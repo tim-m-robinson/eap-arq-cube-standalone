@@ -2,6 +2,7 @@ package net.atos;
 
 import java.net.URL;
 
+import org.arquillian.cube.CubeIp;
 import org.arquillian.cube.DockerUrl;
 import org.arquillian.cube.HostIp;
 
@@ -21,7 +22,10 @@ import static org.junit.Assert.*;
 public class CubeTest {
 
     @HostIp
-    private String ip;
+    private String hostIp;
+
+    @CubeIp(containerName = "test")
+    private String cubeIp;
 
     @DockerUrl(containerName = "test", exposedPort = 1080)
     @ArquillianResource
@@ -39,10 +43,12 @@ public class CubeTest {
     public void heartbeatTest() throws Exception {
 
         System.out.println("URL: "+url.toExternalForm());
+        System.out.println("Host IP: "+hostIp);
+        System.out.println("Cube IP: "+cubeIp);
 
         given().
         when().
-          get(url.toExternalForm() + "/proxy/").
+          get("http://"+cubeIp+":1080/" + "proxy/").
         then().
           assertThat().body(containsString("<html>"));
     }

@@ -7,6 +7,7 @@
         
   <extension qualifier="docker"> 
     <property name="definitionFormat">CUBE</property>
+    <property name="dockerInsideDockerResolution">true</property>
     <property name="dockerContainers">
       test:
         image: proxy
@@ -26,7 +27,7 @@
         image: fuse_eap:6.3.0
         await:
           strategy: sleeping
-          sleepTime: 30 s
+          sleepTime: 10 s
         restartPolicy:
           name: failure
           maximumRetryCount: 1
